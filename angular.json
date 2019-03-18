@@ -2,7 +2,226 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "",
-  "projects": {},
+  "projects": {
+    "legba-legba": {
+      "root": "apps/legba/legba/",
+      "sourceRoot": "apps/legba/legba/src",
+      "projectType": "application",
+      "prefix": "pajuani",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/legba/legba",
+            "index": "apps/legba/legba/src/index.html",
+            "main": "apps/legba/legba/src/main.ts",
+            "polyfills": "apps/legba/legba/src/polyfills.ts",
+            "tsConfig": "apps/legba/legba/tsconfig.app.json",
+            "assets": [
+              "apps/legba/legba/src/favicon.ico",
+              "apps/legba/legba/src/assets",
+              "apps/legba/legba/src/manifest.json"
+            ],
+            "styles": ["apps/legba/legba/src/styles.scss"],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/legba/legba/src/environments/environment.ts",
+                  "with": "apps/legba/legba/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/legba/legba/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "legba-legba:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "legba-legba:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "legba-legba:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/legba/legba/tsconfig.app.json",
+              "apps/legba/legba/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/legba/legba/src/test.ts",
+            "tsConfig": "apps/legba/legba/tsconfig.spec.json",
+            "karmaConfig": "apps/legba/legba/karma.conf.js",
+            "polyfills": "apps/legba/legba/src/polyfills.ts",
+            "styles": [],
+            "scripts": [],
+            "assets": ["apps/legba/legba/src/manifest.json"]
+          }
+        }
+      }
+    },
+    "legba-legba-e2e": {
+      "root": "apps/legba/legba-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/legba/legba-e2e/cypress.json",
+            "tsConfig": "apps/legba/legba-e2e/tsconfig.e2e.json",
+            "devServerTarget": "legba-legba:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "legba-legba:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/legba/legba-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    },
+    "core-translation": {
+      "root": "libs/core/translation",
+      "sourceRoot": "libs/core/translation/src",
+      "projectType": "library",
+      "prefix": "pajuani",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/translation/tsconfig.lib.json",
+              "libs/core/translation/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/core/translation/src/test.ts",
+            "tsConfig": "libs/core/translation/tsconfig.spec.json",
+            "karmaConfig": "libs/core/translation/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "core-request": {
+      "root": "libs/core/request",
+      "sourceRoot": "libs/core/request/src",
+      "projectType": "library",
+      "prefix": "pajuani",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/request/tsconfig.lib.json",
+              "libs/core/request/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/core/request/src/test.ts",
+            "tsConfig": "libs/core/request/tsconfig.spec.json",
+            "karmaConfig": "libs/core/request/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "core-pjmaterial": {
+      "root": "libs/core/pjmaterial",
+      "sourceRoot": "libs/core/pjmaterial/src",
+      "projectType": "library",
+      "prefix": "pajuani",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/core/pjmaterial/tsconfig.lib.json",
+              "libs/core/pjmaterial/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/core/pjmaterial/src/test.ts",
+            "tsConfig": "libs/core/pjmaterial/tsconfig.spec.json",
+            "karmaConfig": "libs/core/pjmaterial/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    }
+  },
   "cli": {
     "warnings": {
       "typescriptMismatch": false,
@@ -17,5 +236,6 @@
     "@nrwl/schematics:library": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "legba-legba"
 }
