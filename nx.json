@@ -22,6 +22,9 @@
     },
     "core-pjmaterial": {
       "tags": ["pjmat"]
+    },
+    "util": {
+      "tags": ["pjutil"]
     }
   }
 }

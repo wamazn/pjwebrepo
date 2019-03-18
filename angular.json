@@ -27,8 +27,15 @@
               "apps/legba/legba/src/assets",
               "apps/legba/legba/src/manifest.json"
             ],
-            "styles": ["apps/legba/legba/src/styles.scss"],
-            "scripts": [],
+            "styles": [
+              "apps/legba/legba/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {
@@ -212,6 +219,37 @@
             "main": "libs/core/pjmaterial/src/test.ts",
             "tsConfig": "libs/core/pjmaterial/tsconfig.spec.json",
             "karmaConfig": "libs/core/pjmaterial/karma.conf.js"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "util": {
+      "root": "libs/util",
+      "sourceRoot": "libs/util/src",
+      "projectType": "library",
+      "prefix": "pajuani",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/util/tsconfig.lib.json",
+              "libs/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/util/src/test.ts",
+            "tsConfig": "libs/util/tsconfig.spec.json",
+            "karmaConfig": "libs/util/karma.conf.js"
           }
         }
       },

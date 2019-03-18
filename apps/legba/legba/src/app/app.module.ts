@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CorePjMaterialModule } from '@pajuani/core/pjmaterial';
 import { CoreRequestModule } from '@pajuani/core/request';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { CoreRequestModule } from '@pajuani/core/request';
     RouterModule.forRoot([], { initialNavigation: 'enabled' }),
     CorePjMaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,31 @@
+<div class="container h-100">
+  <div class="row h-100 mat-typography">
+    <div class="col-md-6 align-self-center mx-auto">
+      <h1 class="text-center">Sign In</h1>
+      <form (ngSubmit)="findUser()" [formGroup]="identifierForm" novalidate>
+        <mat-form-field class="col-md-12">
+          <input name="identifier" matInput placeholder="@username or email" formControlName="identifier" required>
+          <mat-error *ngIf="identifierForm.controls['identifier'].invalid"></mat-error>
+        </mat-form-field>
+      </form>
+      <div class="row">
+          <button class="col-md-3 mr-auto"
+          mat-button
+          color="primary"
+          click="">Forgot password</button>
+
+        <button class="col-md-5 mx-auto"
+        mat-flat-button
+        [disabled]="identifierForm.controls['identifier'].invalid"
+        color="primary"
+        click="findUser()">Next</button>
+    </div>
+    <div class="row">
+        <button class="col-md-3 mr-auto my-5"
+        mat-stroked-button
+        color="primary"
+        click="">Create an account</button>
+    </div>
+    </div>
+  </div>
+</div>

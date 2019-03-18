@@ -17,7 +17,8 @@
     "paths": {
       "@pajuani/core/translation": ["libs/core/translation/src/index.ts"],
       "@pajuani/core/request": ["libs/core/request/src/index.ts"],
-      "@pajuani/core/pjmaterial": ["libs/core/pjmaterial/src/index.ts"]
+      "@pajuani/core/pjmaterial": ["libs/core/pjmaterial/src/index.ts"],
+      "@pajuani/util": ["libs/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

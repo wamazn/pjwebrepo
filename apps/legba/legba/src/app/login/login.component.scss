@@ -1,0 +1,19 @@
+#pj-logo::before {
+    display: block;
+    content: "";
+    position: fixed;
+    width: 100vh;
+    height: 100%;
+    background: #66c26d;
+    background-size: 200% 200%;
+    -webkit-clip-path: polygon(80% 100%, 100% 0%, 30% 100%, 0 30%);
+    clip-path: polygon(80% 100%, 100% 0%, 30% 100%, 0 30%);
+    max-width: 100%; /*
+    -webkit-animation: logogradientAnimation 12s ease infinite;
+    -moz-animation: logogradientAnimation 12s ease infinite;
+      animation: logogradientAnimation 12s ease infinite; */
+}
+
+mat-form-field.mat-form-field {
+    font-size: 1.3em;
+  }
